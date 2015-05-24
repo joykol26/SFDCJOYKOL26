@@ -1,0 +1,32 @@
+<apex:page standardController="UserRegistration__c"
+        extensions="LoginPages" showHeader="false" sidebar="false"
+        standardStylesheets="true">
+        <apex:Pagemessages id="msg" />
+        <apex:form >
+                <apex:pageBlock title="LogIn">
+                        <apex:pageBlockSection columns="2">
+                                <p>
+                                        <b>LogIn Page</b><br />
+                                </p>
+                                <apex:panelGrid columns="2" style="margin-top:1em;">
+                                        <p>
+                                                <b>UserName/Email*</b><br />
+                                                <apex:inputField id="email"
+                                                        value="{!UserRegistration__c.Email__c}" />
+                                        </p>
+                                        <p>
+                                                <b>Password*</b><br />
+                                                <apex:inputSecret id="pswd"
+                                                        value="{!UserRegistration__c.FirstTimePassword__c}" />
+                                        </p>
+                                </apex:panelGrid>
+                        </apex:pageBlockSection>
+                </apex:pageBlock>
+                <apex:pageBlock title="Buttons">
+                        <apex:pageBlockSection columns="2">
+                                <apex:commandButton action="{!validateUser}" value="LogIn"
+                                        id="LogIn" />
+                        </apex:pageBlockSection>
+                </apex:pageBlock>
+        </apex:form>
+</apex:page>

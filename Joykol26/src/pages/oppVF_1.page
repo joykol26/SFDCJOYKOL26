@@ -1,0 +1,31 @@
+<apex:page controller="OppInlineController">
+    <apex:form id="oppDemoForm">
+        
+        <apex:pageBlock mode="inlineEdit">
+
+        <apex:pageBlockButtons >
+           <!-- <apex:commandButton value="Save" action="{!save}"/>-->
+           <apex:commandButton action="{!SaveInlineChanges}" value="Save" id="saveButton"/>           
+            <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+     <apex:pageBlockSection >
+        <apex:pageBlockTable value="{!attended}" var="o"> 
+        <apex:column >
+        <apex:facet name="header">Name</apex:facet>   
+        <apex:outputtext value="{!o.Name}" id="oppNameDOM" ></apex:outputtext>
+        <!--<apex:outputField value="{!o.Name}" id="oppNameDOM" />-->
+        </apex:column>
+        <apex:column >
+        <apex:facet name="header">Amount</apex:facet> 
+        <apex:outputField value="{!o.amount}" id="oppAmnt" />
+        </apex:column>
+      <apex:inlineEditSupport showOnEdit="saveButton, cancelButton" disabled="false"
+                        hideOnEdit="editButton" event="ondblclick" 
+                        changedStyleClass="myBoldClass" resetFunction="resetInlineEdit"/>
+
+        </apex:pageBlockTable>
+     </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

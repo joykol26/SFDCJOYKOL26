@@ -1,0 +1,22 @@
+<apex:page Controller="sc33">
+ <apex:form >
+ <apex:pageBlock >
+ <apex:pageBlockTable value="{!acc}" var="ac">
+ <apex:column headerValue="Action">
+ <apex:commandLink value="delete" onclick="if(!confirm('are you sure?'))return ;"  action="{!dodelete}">
+ <apex:param name="acid" value="{!ac.id}"/>
+ </apex:commandLink>
+ </apex:column>
+ <apex:column headervalue="Accountname"> 
+ {!ac.name}
+ </apex:column>
+ </apex:pageBlockTable>
+ </apex:pageBlock>
+ <script>
+ function demofunction()
+ {
+ alert('clicked');
+ }
+ </script>
+ </apex:form>
+</apex:page>

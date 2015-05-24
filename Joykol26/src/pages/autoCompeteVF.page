@@ -1,0 +1,7 @@
+<apex:page >
+<apex:form >
+<apex:inputText id="membNam" >
+<c:autoComplete autocomplete_textbox="{!$Component.membNam}" objectname="Account" additionalfield="Account.Name"/>
+</apex:inputText> 
+</apex:form>
+</apex:page>

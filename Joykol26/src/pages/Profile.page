@@ -1,0 +1,26 @@
+<apex:page standardController="UserRegistration__c"
+    extensions="LoginPages" showHeader="false" sidebar="false"
+    standardStylesheets="true">
+    <apex:Pagemessages id="msg" />
+    <apex:form >
+        <apex:pageBlock title="Profile">
+            <apex:pageBlockSection columns="2">
+                <p>
+                    <b>Profile</b><br />
+                </p>
+                <apex:panelGrid columns="2" style="margin-top:1em;">
+                    <p>
+                        <b>FirstName*</b><br />
+                        <apex:outputText id="FirstName"
+                            value="{!profile.First_Name__c }" />
+                    </p>
+                    <p>
+                        <b>EMAIl*</b><br />
+                         <apex:outputText id="email"
+                            value="{!profile.Email__c}" />
+                    </p>
+                    </apex:panelGrid>
+                     </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

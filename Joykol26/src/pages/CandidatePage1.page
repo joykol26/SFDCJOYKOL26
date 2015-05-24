@@ -1,0 +1,21 @@
+<apex:page standardController="Candidate__c" extensions="DupEmailBlockRecruting1" id="thePage">
+<apex:form id="candi">
+    
+ <apex:pageBlock id="pgBlock">
+  <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save"/>          
+                <apex:commandButton action="{!edit}" value="Edit"/>                   
+            </apex:pageBlockButtons>    
+         <apex:pageBlockSection id="fn" >
+       <apex:inputField value="{!Candidate__c.First_Name__c}" id="candidateFN" ></apex:inputField> 
+     
+   </apex:pageBlockSection>       
+    <apex:pageBlockSection id="email" >
+      
+      <apex:inputField value="{!Candidate__c.Email__c}" id="candidateEmail" onmouseout="valEmail(this.value);" ></apex:inputField> 
+   </apex:pageBlockSection>
+   <apex:actionFunction action="{!checkEmail}" name="valEmail" reRender="candi"/>               
+ </apex:pageBlock>
+<apex:pageMessages id="pgMsg" ></apex:pageMessages>
+</apex:form>
+</apex:page>

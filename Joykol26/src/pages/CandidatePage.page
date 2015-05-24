@@ -1,0 +1,19 @@
+<apex:page controller="DupEmailBlockRecruting">
+    <apex:form id="candi">
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!candidate}" var="candid">
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputtext value="{!candid.First_Name__c}" id="candidateName"></apex:outputtext>                  
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Email</apex:facet>
+                    <apex:outputField value="{!candid.Email__c}" id="candidateEmail"></apex:outputField>                    
+                </apex:column>
+                <apex:inlineEditSupport showOnEdit="saveButton, cancelButton" disabled="false"
+                        hideOnEdit="editButton" event="ondblclick" 
+                        changedStyleClass="myBoldClass" resetFunction="resetInlineEdit"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

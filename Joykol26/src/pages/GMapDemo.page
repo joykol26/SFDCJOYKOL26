@@ -1,0 +1,5 @@
+<apex:page standardController="Account" showheader="false">
+  <c:drivingdirection LocationA="{!Account.BillingPostalCode}+{!Account.BillingState}+{!Account.BillingCountry}" 
+   LocationB="{!$User.PostalCode}+ {!$User.State}+ {!$User.Street}">
+  </c:drivingdirection>
+</apex:page>

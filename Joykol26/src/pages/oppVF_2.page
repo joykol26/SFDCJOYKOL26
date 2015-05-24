@@ -1,0 +1,21 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities">
+    <apex:form >
+        <apex:pageBlock mode="inlineEdit">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!edit}" id="editButton" value="Edit"/>
+                <apex:commandButton action="{!save}" id="saveButton" value="Save"/>
+                <apex:commandButton onclick="resetInlineEdit()" id="cancelButton" value="Cancel"/>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockTable value="{!opportunities}" var="opp">
+                
+                <apex:outputtext value="{!opp.name}">
+                   
+                </apex:outputtext>
+               
+
+                <apex:outputField value="{!opp.amount}"/>
+           </apex:pageBlockTable>                 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

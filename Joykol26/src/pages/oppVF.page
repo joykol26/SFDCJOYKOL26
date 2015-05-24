@@ -1,0 +1,25 @@
+<apex:page extensions="OptyTestPOC"   standardController="Opportunity">
+   
+    <apex:form > 
+     <apex:pageBlock mode="Edit">
+            <apex:pageBlockSection title="optunity" id="pgSecopty" columns="1">
+                <apex:pageBlockSectionItem id="pg">
+                    <apex:outputPanel >                                          
+                          
+                         <apex:inputText value="{!OppName }"/>
+                        </apex:outputPanel>
+                     
+                 </apex:pageBlockSectionItem>  
+                 <apex:pageBlockSectionItem id="pgSec">
+                    <apex:outputPanel >                                          
+                        <apex:inputText value="{!oppID}"/>  
+                             <apex:commandButton value="Save" action="{!save}"/>
+                        </apex:outputPanel>                   
+                 </apex:pageBlockSectionItem>   
+                       
+        </apex:pageBlockSection>
+           <apex:pageBlockButtons id="btns" >
+           </apex:pageBlockButtons>  
+         </apex:pageBlock>   
+  </apex:form>
+</apex:page>

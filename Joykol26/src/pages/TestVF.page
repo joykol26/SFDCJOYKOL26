@@ -1,0 +1,6 @@
+<apex:page standardController="Account" extensions="YourExtension">
+<apex:form id="theform">
+
+    <apex:outputLabel id="outputValue" value="{!sObjectType }"/>
+</apex:form>
+</apex:page>

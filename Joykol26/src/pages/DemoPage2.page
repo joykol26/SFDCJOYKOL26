@@ -1,0 +1,62 @@
+<apex:page controller="OpportunityRetrievalClass1">
+    <apex:form id="oppDemoForm">
+        <apex:pageMessages />
+        <apex:pageBlock title="Page Size">
+            <apex:pageBlockSection columns="1">
+                <apex:selectList size="1" value="{!pageSize}">
+                    <apex:selectOption itemValue="10" itemLabel="10" />
+                    <apex:selectOption itemValue="50" itemLabel="50" />
+                    <apex:selectOption itemValue="100" itemLabel="100" />
+                   
+                    <apex:actionSupport event="onchange"
+                        action="{!getInitialAccountSet}" rerender="accts" />
+                    
+                </apex:selectList>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock id="accts" mode="inlineEdit">
+
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!SaveInline}" value="Save"
+                    id="saveButton" />
+
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!oppMap}" var="o">
+                    <apex:variable var="count" value="{!0}" />
+
+                    <apex:column >
+                        <apex:facet name="header">Counter</apex:facet>
+                        <apex:outputLabel value="{!count}"></apex:outputLabel>
+                        <apex:variable var="count" value="{!count + 1}" />
+                    </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">Name</apex:facet>
+                        <apex:outputtext value="{!oppMap[o].Name}" id="oppNameDOM"></apex:outputtext>
+                        <!--<apex:outputField value="{!o.Name}" id="oppNameDOM" />-->
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Amount</apex:facet>
+                        <apex:outputField value="{!oppMap[o].amount}" id="oppAmnt" />
+                    </apex:column>
+                    <apex:inlineEditSupport showOnEdit="saveButton, cancelButton"
+                        disabled="false" hideOnEdit="editButton" event="ondblclick"
+                        changedStyleClass="myBoldClass" resetFunction="resetInlineEdit" />
+
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputPanel style="text-align:center;horizontal-align:center;">
+                <apex:commandLink rendered="{!NOT(pageNumber == 0)}"
+                    action="{!previous}" rerender="accts">Prev</apex:commandLink>
+                <script>
+              
+                </script>
+                <apex:outputLabel value="{!$Label.pagenationOutSymbol}"
+                    rendered="{!NOT(pageNumber == noOfPages -1) && !(pageNumber==0)}"></apex:outputLabel>
+                <apex:commandLink rendered="{!NOT(pageNumber == noOfPages -1)}"
+                    action="{!next}" rerender="accts">Next</apex:commandLink>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

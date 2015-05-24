@@ -1,0 +1,22 @@
+<apex:page id="theoptypage" standardController="Opportunity" >
+<apex:form id="optyform">
+<apex:pageBlock id="pg" mode="edit">
+    <apex:pageBlockButtons id="btn" location="both" >
+        <apex:commandButton value="Save" action="{!save}"/>
+        <apex:commandButton value="cancel" action="{!cancel}"/>
+    </apex:pageBlockButtons>
+    
+    <apex:pageBlockSection id="opty_1" title="Opportunity Details" columns="2">
+            <apex:inputField value="{!Opportunity.name}"  />
+             <apex:inputField value="{!Opportunity.AccountId}"  />                                    
+                        
+            <apex:inputField value="{!Opportunity.Owner.Name}"  /> 
+            <apex:inputField value="{!Opportunity.CloseDate}"  />         
+
+            <apex:inputField value="{!Opportunity.Amount}"  />            
+            
+    </apex:pageBlockSection>
+</apex:pageBlock>
+    
+</apex:form>
+  </apex:page>

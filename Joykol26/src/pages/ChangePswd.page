@@ -1,0 +1,30 @@
+<apex:page standardController="UserRegistration__c"
+	extensions="LoginPages" showHeader="false" sidebar="false"
+	standardStylesheets="true">
+	<apex:Pagemessages id="msg" />
+	<apex:form >
+		<apex:pageBlock title="PASSWORD CHANGE">
+			<apex:pageBlockSection columns="2">
+				<p>
+					<b>Password Change Page</b><br />
+				</p>
+				<apex:panelGrid columns="2" style="margin-top:1em;">
+					<p>
+						<b>New Password</b><br />
+						<apex:inputSecret id="pswd1" value="{!newPassword}" />
+					</p>
+					<p>
+						<b>Confirm Password</b><br />
+						<apex:inputSecret id="pswd2" value="{!confPassword}" />
+					</p>
+				</apex:panelGrid>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+		<apex:pageBlock title="Buttons">
+			<apex:pageBlockSection columns="2">
+				<apex:commandButton action="{!passwordConfirmation}"
+					value="Change Password" id="changePswd" />
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

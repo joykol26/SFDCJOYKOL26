@@ -1,0 +1,79 @@
+<apex:page standardController="UserRegistration__c"
+    extensions="LoginPages" showHeader="false" sidebar="false"
+    standardStylesheets="true">
+    <apex:Pagemessages id="msg" />
+     <apex:messages />
+    <apex:form id="candi">
+    
+              
+            <apex:pageBlock title="PersonalDetail">
+            <apex:pageBlockSection columns="2">
+                <p>
+                    <b>New User RegistrationPage</b><br />
+                </p>
+                <apex:panelGrid columns="2" style="margin-top:1em;">
+                    <p>
+                        <b>FirstName*</b><br />
+                        <apex:inputField id="FirstName"
+                            value="{!UserRegistration__c.First_Name__c}" />
+                    </p>
+                    <p>
+                        <b>EMAIl*</b><br />
+                        <apex:inputField id="email"
+                            value="{!UserRegistration__c.Email__c}" />
+                    </p>
+                    <p>
+                        <b>Phone*</b><br />
+                        <apex:inputField id="Phone"
+                            value="{!UserRegistration__c.Phone__c}" />
+                    </p>
+                    <p>
+                        <apex:selectRadio value="{!UserRegistration__c.Gender__c}"
+                            id="Gender">
+                            <apex:selectOption itemValue="Male" itemLabel="Male" />
+                            <apex:selectOption itemValue="Female" itemLabel="Female" />
+                        </apex:selectRadio>
+                    </p>
+                </apex:panelGrid>
+            </apex:pageBlockSection>            
+           <apex:actionFunction action="{!checkEmail}" name="valEmail" reRender="msg" immediate="false"/> 
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Country/State Picker">
+            <apex:pageBlockSection columns="2">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Country</th>
+                            <td><apex:selectList id="country" styleclass="std" size="1"
+                                    value="{!country}" >
+                                    <apex:selectOptions value="{!countriesSelectList}" />                                    
+                                   <apex:actionSupport event="onchange"
+                                  rerender="statesSelectList"/>
+                                </apex:selectList></td>
+                        </tr>
+                        <tr id="state_input">
+                            <th>State/Province</th>
+                            <td><apex:selectList id="statesSelectList" styleclass="std"
+                                    size="1" value="{!state}">
+                                    <apex:selectOptions value="{!statesSelectList}" />
+                                </apex:selectList></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--<apex:actionFunction name="rerenderStates"
+                    rerender="statesSelectList" action="{!stateSelectList}" >
+                </apex:actionFunction>-->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Buttons">
+            <apex:pageBlockSection columns="2">
+                <apex:commandButton action="{!registerUser}" value="Register"
+                    id="register" />
+                <!-- <apex:commandButton action="{!registerUser}" value="Save" id="save"/>-->
+                <!-- <apex:commandButton action="{!registerUser}" value="Cancel" id="cancel"/>-->
+
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
